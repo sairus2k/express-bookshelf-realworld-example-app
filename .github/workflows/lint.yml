@@ -11,16 +11,35 @@ jobs:
       image: node:14.17.6-alpine
     steps:
       - uses: actions/checkout@v2
+      - name: Cache node.js modules
+        uses: actions/cache@2
+        env:
+          cache-name: npm-${{ hashFiles('package-lock.json') }}
+        with:
+          path: ~/.npm
+          key: ${{ env.cache-name }}
+          restore-key: |
+            ${{ env.cache-name }}
       - name: Install dependencies
         run: npm install
       - name: Lint source code with ESLint
         run: npm run lint
+
   prettier:
     runs-on: ubuntu-latest
     container:
       image: node:14.17.6-alpine
     steps:
       - uses: actions/checkout@v2
+      - name: Cache node.js modules
+        uses: actions/cache@2
+        env:
+          cache-name: npm-${{ hashFiles('package-lock.json') }}
+        with:
+          path: ~/.npm
+          key: ${{ env.cache-name }}
+          restore-key: |
+            ${{ env.cache-name }}
       - name: Install dependencies
         run: npm install
       - name: Lint source code with Prettier
