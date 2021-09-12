@@ -18,7 +18,7 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ env.cache-name }}
-          restore-key: |
+          restore-keys: |
             ${{ env.cache-name }}
       - name: Install dependencies
         run: npm install
@@ -38,7 +38,7 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ env.cache-name }}
-          restore-key: |
+          restore-keys: |
             ${{ env.cache-name }}
       - name: Install dependencies
         run: npm install
