@@ -1,4 +1,4 @@
-name: eslint
+name: lint
 on:
   push:
     branches: [master]
@@ -7,9 +7,10 @@ on:
 jobs:
   eslint:
     runs-on: ubuntu-latest
+    container:
+      image: node:14.17.6-alpine
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
       - name: Install dependencies
         run: npm install
       - name: Lint source code with ESLint
