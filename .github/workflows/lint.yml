@@ -15,3 +15,13 @@ jobs:
         run: npm install
       - name: Lint source code with ESLint
         run: npm run lint
+  prettier:
+    runs-on: ubuntu-latest
+    container:
+      image: node:14.17.6-alpine
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Lint source code with Prettier
+        run: npm run check:format
