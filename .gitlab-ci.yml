@@ -1,0 +1,16 @@
+stages:
+  - lint
+
+eslint:
+  image: node:14.17.6-alpine
+  stage: lint
+  script:
+    - npm install
+    - npm run lint
+
+prettier:
+  image: node:14.17.6-alpine
+  stage: lint
+  script:
+    - npm install
+    - npm run check:format
