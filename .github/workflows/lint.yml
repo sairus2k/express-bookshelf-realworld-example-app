@@ -8,7 +8,7 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     container:
-      image: node:14.17.6-alpine
+      image: node:14.17.6
     steps:
       - uses: actions/checkout@v2
       - name: Cache node.js modules
@@ -26,7 +26,7 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
     container:
-      image: node:14.17.6-alpine
+      image: node:14.17.6
     steps:
       - uses: actions/checkout@v2
       - name: Cache node.js modules
