@@ -13,13 +13,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Cache node.js modules
         uses: actions/cache@v2
-        env:
-          cache-name: npm-${{ hashFiles('package-lock.json') }}
         with:
           path: ~/.npm
-          key: ${{ env.cache-name }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ env.cache-name }}
+            ${{ runner.os }}-node-
       - name: Install dependencies
         run: npm install
       - name: Lint source code with ESLint
